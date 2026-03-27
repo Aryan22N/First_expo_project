@@ -1,20 +1,45 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import Colors from '../constants/Colors'
+import { FILTER_OPTIONS, FilterOption } from '@/constants/task';
+import React from 'react';
+import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import Colors from '../constants/Colors';
 
-const FilterTabs = () => {
+
+type FilterTabProps = {
+  selected: FilterOption;
+  onSelect: (option: FilterOption) => void;
+};
+
+const FilterTabs = ({ selected, onSelect }: FilterTabProps) => {
   return (
-    <View>
-      <Text>FilterTabs</Text>
-    </View>
-  )
-}
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.container}
+    >
+      {FILTER_OPTIONS.map((item) => {
+        const isSelected = item === selected;
 
-export default FilterTabs
+        return (
+          <TouchableOpacity
+            key={item}
+            style={[styles.tab, isSelected && styles.tabSelected]}
+            onPress={() => onSelect(item)}
+          >
+            <Text style={[styles.tabText, isSelected && styles.tabTextSelected]}>
+              {item}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
+    </ScrollView>
+  );
+};
+
+export default FilterTabs;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 2,
     gap: 10,
     paddingVertical: 12,
   },

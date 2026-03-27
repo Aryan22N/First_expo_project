@@ -1,6 +1,6 @@
-import Colors from "../constants/Colors";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import Colors from "../constants/Colors";
 
 type DateItem = {
   month: string;
@@ -66,15 +66,15 @@ export default DateSelector;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    gap: 8,
+    paddingHorizontal: 2,
+    gap: 6,
     paddingVertical: 10,
   },
   dateItem: {
     alignItems: "center",
     alignSelf: "flex-start",
     paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingHorizontal: 2,
     borderRadius: 20,
     minWidth: 64,
   },
